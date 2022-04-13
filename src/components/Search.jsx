@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 //react icons
 import { FaSearch } from "react-icons/fa";
+import { GiTrenchKnife } from "react-icons/gi";
 //styles
 import styled from "styled-components";
 //react router dom
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Search() {
     const [input, setInput] = useState("");
@@ -20,17 +21,23 @@ function Search() {
     };
 
     return (
-        <FormStyle onSubmit={submitHandler}>
-            <div>
-                <input
-                    onChange={inputHandler}
-                    type='text'
-                    placeholder='favorite food :)'
-                    value={input}
-                />
-                <FaSearch />
-            </div>
-        </FormStyle>
+        <>
+            <Nav>
+                <GiTrenchKnife />
+                <Logo to={"/"}>Recipe Boi</Logo>
+            </Nav>
+            <FormStyle onSubmit={submitHandler}>
+                <div>
+                    <input
+                        onChange={inputHandler}
+                        type='text'
+                        placeholder='favorite food :)'
+                        value={input}
+                    />
+                    <FaSearch />
+                </div>
+            </FormStyle>
+        </>
     );
 }
 
@@ -57,6 +64,26 @@ const FormStyle = styled.form`
         left: 0%;
         transform: translate(100%, -50%);
         color: #fff;
+    }
+`;
+
+const Logo = styled(Link)`
+    /* border: 1px solid red; */
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: 400;
+    font-family: "Lobster Two", cursive;
+`;
+
+const Nav = styled.div`
+    /* border: 1px solid red; */
+    padding: 1rem 0rem;
+    display: flex;
+    align-items: center;
+
+    svg {
+        font-size: 2.5rem;
+        margin-right: 0.5rem;
     }
 `;
 
