@@ -9,9 +9,23 @@ export default createGlobalStyle`
         font-family: 'Montserrat', sans-serif;
     }
 
-    body,
-    html {
+    body {
+        margin: 0% 10%;
+        
+    }
 
+    h4 {
+        font-size: 1rem;
+        color: rgb(56,56,56);
+    }
+
+        h4 {
+        font-size: 1.5rem;
+        color: rgb(56,56,56);
+    }
+
+    a {
+        color: rgb(56,56,56);
     }
 
 `;
