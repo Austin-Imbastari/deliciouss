@@ -6,6 +6,8 @@ import styled from "styled-components";
 import { devices } from "../breakpoints";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
+// react router
+import { Link } from "react-router-dom";
 
 function Veggie() {
     const [veggies, setVeggies] = useState([]);
@@ -45,9 +47,14 @@ function Veggie() {
                     {veggies.map((veggie) => (
                         <SplideSlide key={veggie.id}>
                             <Card>
-                                <p>{veggie.title}</p>
-                                <img src={veggie.image} alt={veggie.title} />
-                                <Gradient />
+                                <Link to={`/recipe/${veggie.id}`}>
+                                    <p>{veggie.title}</p>
+                                    <img
+                                        src={veggie.image}
+                                        alt={veggie.title}
+                                    />
+                                    <Gradient />
+                                </Link>
                             </Card>
                         </SplideSlide>
                     ))}

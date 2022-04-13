@@ -1,33 +1,32 @@
 import React, { useEffect, useState } from "react";
 //styles
 import styled from "styled-components";
-//animations
-import { motion } from "framer-motion";
 // react router
 import { Link, useParams } from "react-router-dom";
-// axios
+//axios
 import axios from "axios";
 
-function Cuisine() {
-    const [cuisine, setCuisine] = useState([]);
-
+function Searched() {
+    const [searchedRecipes, setSearchedRecipes] = useState([]);
     let params = useParams();
+    console.log(params);
 
-    const getCuisines = async (name) => {
+    const getSearchedRecipes = async (name) => {
         const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
         const api = await axios.get(
-            `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&cuisine=${name}`
+            `https://api.spoonacular.com/recipes/complexSearch?apiKey=${API_KEY}&query=${name}`
         );
-        setCuisine(api.data.results);
+        console.log(api.data.results);
+        setSearchedRecipes(api.data.results);
     };
 
     useEffect(() => {
-        getCuisines(params.type);
-    }, [params.type]);
+        getSearchedRecipes(params.search);
+    }, [params.search]);
 
     return (
         <Grid>
-            {cuisine.map((item) => (
+            {searchedRecipes.map((item) => (
                 <Card key={item.id}>
                     <Link to={`/recipe/${item.id}`}>
                         <img src={item.image} alt={item.title} />
@@ -59,4 +58,4 @@ const Card = styled.div`
     }
 `;
 
-export default Cuisine;
+export default Searched;

@@ -51,6 +51,7 @@ const SLink = styled(NavLink)`
     cursor: pointer;
     transform: scale(0.8);
     text-decoration: none;
+    transition: all 0.5s ease-out;
 
     h4 {
         color: #ffff;
@@ -61,6 +62,19 @@ const SLink = styled(NavLink)`
     svg {
         color: #ffff;
         font-size: 1.5rem;
+    }
+
+    &.active {
+        background: linear-gradient(to right, #f27121, #e94057);
+        svg {
+            color: #ffff;
+        }
+        h4 {
+            color: #ffff;
+        }
+    }
+    &:hover {
+        transform: scale(1);
     }
 `;
 
