@@ -40,3 +40,9 @@ An app that shows a list of catergoies of different food types.
     ```shell
     npm install
     ```
+    
+1. Run the webpack development server.
+
+    ```shell
+    npm start
+    ```
